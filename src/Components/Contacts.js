@@ -1,7 +1,8 @@
-import { Card, CardBody, CardTitle } from "reactstrap";
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { getContacts } from "../Actions/contactAction";
+import Contact from "./Contact";
+
 
 class Contacts extends Component {
   componentDidMount() {
@@ -12,15 +13,11 @@ class Contacts extends Component {
     const { contacts } = this.props;
     return (
       <Fragment>
+        <button onClick={()=>{
+          this.props.history.push('/Add')
+        }}>ADD</button>
         {contacts.map(contact => (
-          <Card>
-            <CardTitle>{contact.name}</CardTitle>
-            <CardBody>
-              {contact.email}
-              <br />
-              {contact.phone}
-            </CardBody>
-          </Card>
+          <Contact contact={contact}/>
         ))}
       </Fragment>
     );

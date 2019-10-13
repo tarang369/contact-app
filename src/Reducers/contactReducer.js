@@ -1,4 +1,5 @@
-import {GET_CONTACTS} from '../Actions/types'
+import {GET_CONTACTS,ADD_CONTACT} from '../Actions/types'
+
 
 const initialState ={
     contacts:[],
@@ -13,6 +14,11 @@ export default function(state = initialState, action ) {
             return {
                 ...state,
                 contacts : action.payload
+            }
+            case ADD_CONTACT:
+            return {
+                ...state,
+                contacts : [action.payload, ...state.contacts]
             }
         default:
             return state;
